@@ -1,5 +1,4 @@
-# MSc Statistics Data Challenge 2017 
-# Forecasting and mitigating epidemic disasters 	
+# MSc Statistics Data Challenge 2017: mitigating epidemic disasters 	
 
 #### Background
 The [West African Ebola virus epidemic](http://apps.who.int/ebola/our-work/achievements) was the most widespread outbreak of Ebola virus disease in history, with disastrous on local populations, and entire countries. Other recent examples of major infectious disease outbreaks are the [2015-2016 Zika epidemic](http://www.who.int/emergencies/zika-virus/en/), and the [MERS-coronavirus epidemic](http://www.who.int/emergencies/mers-cov/en/).
@@ -32,6 +31,6 @@ devtools:::install_github("olli0601/DataChallenge.2017")
 ```    
 * Explore the References tab above to get a feel for all available data sets.
 * Read the survival guide.
-* Think and coordinate as a team before you type.
+* Think before you type, and coordinate as a team.
 
 #### How to make a submission
