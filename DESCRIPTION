@@ -1,0 +1,13 @@
+Package: DataChallenge.2017
+Version: 0.1-0
+Date: 2017/11/14
+Title: 
+Authors@R: person("Oliver", "Ratmann", role = c("aut", "cre"), email = "oliver.ratmann@imperial.ac.uk")
+Suggests:
+    R (>= 3.1),
+    data.table,
+Description: This package contains the data and a few helper functions for the 2017 Data Challenge of the MSc in Statistics at Imperial.
+License: GPL (>=3)
+LazyLoad: yes
+LazyData: true
+RoxygenNote: 5.0.1

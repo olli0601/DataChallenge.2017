@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' data(emstrain)
-#' str(emstrain)
+#' str(train)
 NULL
 
 #' IHR data set 2010-2016
@@ -182,11 +182,11 @@ NULL
 #'
 #' Population sizes in 2013 data set 
 #'
-#' @name pop2013
+#' @name pop13
 #' 
 #' @docType data
 #'
-#' @usage data(pop2013)
+#' @usage data(pop13)
 #'
 #' @format An object of class \code{"data.table"}.
 #'
@@ -194,6 +194,6 @@ NULL
 #'
 #'
 #' @examples
-#' data(pop2013)
-#' str(pop2013)
+#' data(pop13)
+#' str(pop13)
 NULL

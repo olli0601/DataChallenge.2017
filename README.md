@@ -14,21 +14,24 @@ Your primary objective is to predict the number of epidemic disasters in the sam
 #### Why we care
 Scientifically, we are interested in identifying and understanding the interplay of factors that are predictive of epidemic disasters at a country level. 
 
-#### Open data for the Data Challenge
+#### Open data
 To model vulnerability, the WHO is collecting data on a countries' capacity to respond to major public health crises. The IHR data set contains records of 11 capacity indicators per country for 6 years, 2010 to 2016, which could be used to inform a predictive model of epidemic disasters in 2016.     
 
-Some entries are missing, but this is only the first challenge. 
+Some entries are missing, that's the first challenge. 
 
-Public institutions are now making large data sets open access, that describe the wealth and health of countries. There is no reason why you should limit yourself to the IHR data set in predicting country-level risk of major epidemic disease outbreaks. For this year's Data Challenge, we prepared for you several data sets, bringing the number of potential predictors close to 500. This is where the challenge starts to be fun.  
+The World Bank and many other institutions are now making large data sets, that describe the wealth and health of countries, openly available. There is no reason why you should limit yourself to the IHR data set in predicting country-level risk of major epidemic disease outbreaks. For this year's Data Challenge, we prepared for you several data sets, bringing the number of potential predictors to 500. This is where the challenge starts to be fun.  
+
+Combine the data, explore it, and see what is worth to include in your predictive model. 
 
 #### How to start
 * Get the data, type in `R`:
 ```r
-devtools:::install_github("olli0601/PANGEA.HIV.sim")
+# install.packages("devtools")
+devtools:::install_github("olli0601/DataChallenge.2017")
 ?emstrain
 ```    
 * Explore the References tab above to get a feel for all available data sets.
 * Read the survival guide.
-* Think before you type.
+* Think and coordinate as a team before you type.
 
 #### How to make a submission
