@@ -21,4 +21,14 @@ Some entries are missing, but this is only the first challenge.
 
 Public institutions are now making large data sets open access, that describe the wealth and health of countries. There is no reason why you should limit yourself to the IHR data set in predicting country-level risk of major epidemic disease outbreaks. For this year's Data Challenge, we prepared for you several data sets, bringing the number of potential predictors close to 500. This is where the challenge starts to be fun.  
 
-#### How to start    
+#### How to start
+* Get the data, type in `R`:
+```r
+devtools:::install_github("olli0601/PANGEA.HIV.sim")
+?emstrain
+```    
+* Explore the References tab above to get a feel for all available data sets.
+* Read the survival guide.
+* Think before you type.
+
+#### How to make a submission
