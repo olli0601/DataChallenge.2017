@@ -47,3 +47,8 @@ potential predictors to 500. This is where the challenge starts to be fun.
 
 Combine the data, explore it, and see what is worth to include in your
 predictive model. 
+
+#### Getting started
+Please follow the HowTo guides in the green project bar at the top of the page
+for further help. Good luck and we hope you enjoy the challenge!
+
