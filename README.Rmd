@@ -1,8 +1,10 @@
 # MSc Statistics Data Challenge 2017: mitigating epidemic disasters 	
 
 #### Background
-The [West African Ebola virus
-epidemic](http://apps.who.int/ebola/our-work/achievements) was the most
+[Stats Section](http://www.imperial.ac.uk/statistics)
+
+The [West African Ebola
+virus epidemic](http://apps.who.int/ebola/our-work/achievements) was the most
 widespread outbreak of Ebola virus disease in history, with disastrous on local
 populations, and entire countries. Other recent examples of major infectious
 disease outbreaks are the [2015-2016 Zika
