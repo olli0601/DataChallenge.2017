@@ -4,8 +4,7 @@ Date: 2017/11/14
 Title: 
 Authors@R: person("Oliver", "Ratmann", role = c("aut", "cre"), email = "oliver.ratmann@imperial.ac.uk")
 Suggests:
-    R>= (3.1),
-    data.table,,
+    data.table,
     knitr,
     rmarkdown
 Description: This package contains the data and a few helper functions for the 2017 Data Challenge of the MSc in Statistics at Imperial.

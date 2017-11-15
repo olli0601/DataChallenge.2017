@@ -5,9 +5,9 @@
 
 The [West African Ebola
 virus epidemic](http://apps.who.int/ebola/our-work/achievements) was the most
-widespread outbreak of Ebola virus disease in history, with disastrous on local
-populations, and entire countries. Other recent examples of major infectious
-disease outbreaks are the [2015-2016 Zika
+widespread outbreak of Ebola virus disease in history, with disastrous impact on
+local populations, and entire countries. Other recent examples of major
+infectious disease outbreaks are the [2015-2016 Zika
 epidemic](http://www.who.int/emergencies/zika-virus/en/), and the
 [MERS-coronavirus epidemic](http://www.who.int/emergencies/mers-cov/en/).
 
@@ -53,5 +53,5 @@ Please follow the HowTo guides in the green project bar at the top of the page
 for further help. Good luck and we hope you enjoy the challenge!
 
 ### Acknowledgments
-Thanks go to Victor del Rio Villas at the WHO for making the `ems` data
-available.
+Thanks go to Victor del Rio Villas at the WHO for many discussions on this
+topic.

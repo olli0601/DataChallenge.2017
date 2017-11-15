@@ -3,26 +3,26 @@
 # Author: Oliver
 ###############################################################################
 
-#' EMS training data set 2010-2016
-#'
-#' Number of epidemic disasters per country per year that were reported 
-#' to the WHO between 2010-2016.   
-#'
-#' @name emstrain
-#' 
-#' @docType data
-#'
-#' @usage data(emstrain)
-#'
-#' @format An object of class \code{"data.table"}.
-#'
-#' @keywords datasets
-#'
-#'
-#' @examples
-#' data(emstrain)
-#' str(train)
-NULL
+##' EMS training data set 2010-2016
+##'
+##' Number of epidemic disasters per country per year that were reported 
+##' to the WHO between 2010-2016.   
+##'
+##' @name emstrain
+##' 
+##' @docType data
+##'
+##' @usage data(emstrain)
+##'
+##' @format An object of class \code{"data.table"}.
+##'
+##' @keywords datasets
+##'
+##'
+##' @examples
+##' data(emstrain)
+##' str(train)
+#NULL
 
 #' IHR data set 2010-2016
 #'
