@@ -48,16 +48,16 @@ combine the data sets. This is much more efficient than via `for` loops or
 `lapply`.
   
 Second hint: try using `data.table`'s `[...]` syntax. The code below tells
-you what proportion of the data are missing for each column of the `cap` data
+you what proportion of the data are missing for each column of the `pov` data
 set. 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
 require(DataChallenge.2017)
-data(cap)
-df <- melt(cap, id.vars=c('ISO','YEAR'), stringsAsFactors=FALSE)
+data(pov)
+df <- melt(pov, id.vars=c('ISO','YEAR'), stringsAsFactors=FALSE)
 df[, {
 		z <- length(value)
 		z2 <-length(which(is.na(value)))
-		list(N=z, N_NA=z2, P_NA= z/z2)
+		list(N=z, N_NA=z2, P_NA= z2/z)
 	 }, by=c('variable')]		
 ```
 
