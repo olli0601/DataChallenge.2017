@@ -22,4 +22,3 @@ data(ihr)
 str(ihr)
 }
 \keyword{datasets}
-

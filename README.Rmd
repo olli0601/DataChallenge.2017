@@ -51,7 +51,8 @@ predictive model.
 ```r
 # install.packages("devtools")
 devtools:::install_github("olli0601/DataChallenge.2017")
-?emstrain
+?ihr
+?train
 ```    
 * Explore the References tab above to get a feel for all available data sets.
 * Read the survival guide.

@@ -14,7 +14,6 @@ to the WHO between 2010-2016.
 }
 \examples{
 data(emstrain)
-str(emstrain)
+str(train)
 }
 \keyword{datasets}
-

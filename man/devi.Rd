@@ -22,4 +22,3 @@ data(devi)
 str(devi)
 }
 \keyword{datasets}
-

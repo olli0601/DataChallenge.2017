@@ -19,4 +19,3 @@ data(gdp)
 str(gdp)
 }
 \keyword{datasets}
-

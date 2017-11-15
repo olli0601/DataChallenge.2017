@@ -16,4 +16,3 @@ data(whoreg)
 str(whoreg)
 }
 \keyword{datasets}
-

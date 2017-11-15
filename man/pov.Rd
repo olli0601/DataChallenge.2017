@@ -19,4 +19,3 @@ data(pov)
 str(pov)
 }
 \keyword{datasets}
-

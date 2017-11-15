@@ -21,4 +21,3 @@ data(cap)
 str(cap)
 }
 \keyword{datasets}
-

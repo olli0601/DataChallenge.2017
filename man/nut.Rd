@@ -19,4 +19,3 @@ data(nut)
 str(nut)
 }
 \keyword{datasets}
-

@@ -10,4 +10,6 @@ Description: This package contains the data and a few helper functions for the 2
 License: GPL (>=3)
 LazyLoad: yes
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+URL: https://github.com/olli0601/DataChallenge.2017
+BugReports: https://github.com/olli0601/DataChallenge.2017/issues
