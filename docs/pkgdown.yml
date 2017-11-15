@@ -1,0 +1,6 @@
+urls:
+  reference: https://olli0601.github.io/DataChallenge.2017/index.html/reference
+  article: https://olli0601.github.io/DataChallenge.2017/index.html/articles
+articles:
+  GetStarted: GetStarted.html
+

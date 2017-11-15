@@ -1,0 +1,34 @@
+title: Imperial/WHO DataChallenge MSc in Statistics 2017
+url: https://olli0601.github.io/DataChallenge.2017/index.html
+template:
+  params:
+    bootswatch: flatly
+reference:
+  - title: Available data
+    desc: ~
+    contents:
+      - '`emstrain`'
+      - '`ihr`'      
+      - '`cap`'      
+      - '`gdp`'      
+      - '`pov`'      
+      - '`nut`'      
+      - '`pop13`'      
+      - '`whoreg`'
+      - '`devi`'        
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "How To"
+      menu: 
+      -  text: How to get started
+         href: articles/GetStarted.html      
+  right:    
+    - icon: fa-file-code-o 
+      text: "functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/olli0601/DataChallenge.2017
