@@ -23,7 +23,7 @@ require(DataChallenge.2017)
 
 Loading the package makes the various data sets available. [They are listed under
 the functions tab
-above](https://github.com/olli0601/DataChallenge.2017/docs/reference/index.html).
+above](https://olli0601.github.io/DataChallenge.2017/reference/index.html).
 Take a look to learn their names and get a first feel for the data points in
 there. All data sets have two common columns, an anonymised country code (`ISO`)
 and   year of data collection (`YEAR`). You can also do:
