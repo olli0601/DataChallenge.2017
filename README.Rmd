@@ -47,17 +47,3 @@ potential predictors to 500. This is where the challenge starts to be fun.
 
 Combine the data, explore it, and see what is worth to include in your
 predictive model. 
-
-#### How to start
-* Get the data, type in `R`:
-```r
-# install.packages("devtools")
-devtools:::install_github("olli0601/DataChallenge.2017")
-?ihr
-?train
-```    
-* Explore the References tab above to get a feel for all available data sets.
-* Read the survival guide.
-* Think before you type, and coordinate as a team.
-
-#### How to make a submission

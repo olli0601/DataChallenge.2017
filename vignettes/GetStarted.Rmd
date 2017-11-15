@@ -1,0 +1,71 @@
+---
+title: "How to get started"
+date: "`r Sys.Date()`"
+github_document:
+    toc_dept: 1
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+
+### Installation
+
+To get started, type in `R`:
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+# install.packages("devtools")
+devtools:::install_github("olli0601/DataChallenge.2017")
+require(DataChallenge.2017)
+?ihr
+?train
+```    
+
+Loading the package makes the various data sets available. [They are listed under
+the functions tab
+above](https://github.com/olli0601/DataChallenge.2017/docs/reference/index.html).
+Take a look to learn their names and get a first feel for the data points in
+there. All data sets have two common columns, an anonymised country code (`ISO`)
+and   year of data collection (`YEAR`). You can also do:
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+require(DataChallenge.2017)
+data(ihr)
+?ihr
+```  
+
+### Quick survival guide
+
+The very first step is to combine different data sets by country code and
+year of data collection. The data set are stored as a `data.table` object.
+`data.table`s are very similar to `data.frame`s, but **much faster** and **you
+can do a lot more**. [Have a look at
+one or two data table
+tutorials](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+  
+First hint: use `data.table`'s `merge` function by country code and year to
+combine the data sets. This is much more efficient than via `for` loops or
+`lapply`.
+  
+Second hint: try using `data.table`'s `[...]` syntax. The code below tells
+you what proportion of the data are missing for each column of the `cap` data
+set. 
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+require(DataChallenge.2017)
+data(cap)
+df <- melt(cap, id.vars=c('ISO','YEAR'), stringsAsFactors=FALSE)
+df[, {
+		z <- length(value)
+		z2 <-length(which(is.na(value)))
+		list(N=z, N_NA=z2, P_NA= z/z2)
+	 }, by=c('variable')]		
+```
+
+Third hint: there really are not that much data points in the `EMS` training
+data set to begin with, while there are a large number of covariates. The
+challenge is to make the most in this **small n large p setting**. What
+techniques could be appropriate for predicting the 2016 outbreaks? Start with
+some regressions, and google your way.
+
+Fourth hint: the `EMS` data are counts, they are never negative.  
+ 
