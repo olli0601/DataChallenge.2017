@@ -18,27 +18,27 @@ areas that are most in need of resources as well as predicting the impact of
 infectious disease threats  
 
 ### Primary objective
-The WHO's epidemic disasters data set contains a comprehensive record of the
-number of epidemic outbreaks by year and country. For the 2017 Imperial/WHO Data
-Challenge, outbreak data are available from 184 countries for 5 years, 2010 to
-2015.
+With these aims in mind, records of over 20,000 large-scale disasters have
+been digitised. For the 2017 Data Challenge, epidemic outbreak counts are
+available from 66 countries for 5 years, 2010 to 2014.
 
 Your primary objective is to predict the number of epidemic disasters in the
-same 184 countries in 2016.  
+same countries in the years 2015 and 2016.  
 
 ### Why we care
 Scientifically, we are interested in identifying and understanding the interplay
 of factors that are predictive of epidemic disasters at a country level. 
 
-### Open data
-To model vulnerability, the WHO is collecting data on a countries' capacity to
-respond to major public health crises. The IHR data set contains records of 11
-capacity indicators per country for 6 years, 2010 to 2016, which could be used
-to inform a predictive model of epidemic disasters in 2016.     
+### Open data for making a difference
+To model vulnerability, the Word Health Organization is collecting data on a
+countries' capacity to respond to major public health crises. The IHR data set
+contains records of 11 capacity indicators per country for 6 years, 2010 to
+2016, which could be used to inform a predictive model of epidemic disasters in
+2015 and 2016.     
 
 Some entries are missing, that's the first challenge. 
 
-The World Bank and many other institutions are now making large data sets, that
+The World Bank have also made other large data sets, that
 describe the wealth and health of countries, openly available. There is no
 reason why you should limit yourself to the IHR data set in predicting
 country-level risk of major epidemic disease outbreaks. For this year's Data

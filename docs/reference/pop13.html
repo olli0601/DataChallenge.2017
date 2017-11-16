@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>World Bank GDP data set 2010-2016 — gdp • Data Challenge 2017</title>
+<title>Populations 2013 data set — pop13 • Data Challenge 2017</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -100,30 +100,25 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>World Bank GDP data set 2010-2016</h1>
+    <h1>Populations 2013 data set</h1>
     </div>
 
     
-    <p>World Bank national accounts data, and OECD National Accounts data files.</p>
+    <p>Population sizes in 2013 data set</p>
     
 
-    <pre class="usage"><span class='fu'>data</span>(<span class='no'>gdp</span>)</pre>
+    <pre class="usage"><span class='fu'>data</span>(<span class='no'>pop13</span>)</pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>An object of class <code>"data.table"</code>.</p>
     
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://data.worldbank.org/indicator/NY.GDP.MKTP.KD?view=map'>World Bank GDP archive</a></p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>gdp</span>)
-<span class='fu'>str</span>(<span class='no'>gdp</span>)</div><div class='output co'>#&gt; Classes ‘data.table’ and 'data.frame':	11030 obs. of  3 variables:
-#&gt;  $ ISO : chr  "AFG" "AFG" "AFG" "AFG" ...
-#&gt;  $ YEAR: int  2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 ...
-#&gt;  $ GDP : num  8.01e+09 8.69e+09 8.78e+09 9.76e+09 1.03e+10 ...
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>pop13</span>)
+<span class='fu'>str</span>(<span class='no'>pop13</span>)</div><div class='output co'>#&gt; Classes ‘data.table’ and 'data.frame':	185 obs. of  2 variables:
+#&gt;  $ ISO     : chr  "AFG" "ALB" "DZA" "AGO" ...
+#&gt;  $ Pop_2013: num  30682500 2883300 38186100 23448200 90000 ...
 #&gt;  - attr(*, ".internal.selfref")=&lt;externalptr&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -131,8 +126,6 @@
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
-
-      <li><a href="#source">Source</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -3,26 +3,41 @@
 # Author: Oliver
 ###############################################################################
 
-##' EMS training data set 2010-2016
-##'
-##' Number of epidemic disasters per country per year that were reported 
-##' to the WHO between 2010-2016.   
-##'
-##' @name emstrain
-##' 
-##' @docType data
-##'
-##' @usage data(emstrain)
-##'
-##' @format An object of class \code{"data.table"}.
-##'
-##' @keywords datasets
-##'
-##'
-##' @examples
-##' data(emstrain)
-##' str(train)
-#NULL
+#' Epidemic Disasters training data set 2010-2014
+#'
+#' Number of epidemic disasters per country per year. 
+#' 
+##' cannot give you much
+##' more detail, otherwise you can google your way to find the test day
+##' that were reported 
+##' to the International Disaster Database between 2010-2016. In 1988, the 
+##' Centre for Research on the Epidemiology of Disasters (CRED) launched the 
+##' Emergency Events Database (EM-DAT). EM-DAT was created with the initial 
+##' support of the World Health Organisation and the Belgian Government.
+##' The main objective of the database is to serve the purposes of humanitarian 
+##' action at national and international levels. The initiative aims to rationalise 
+##' decision making for disaster preparedness, as well as provide an objective base 
+##' for vulnerability assessment and priority setting.
+##' EM-DAT contains essential core data on the occurrence and effects of over 
+##' 22,000 mass disasters in the world from 1900 to the present day. The database 
+##' is compiled from various sources, including UN agencies, non-governmental 
+##' organisations, insurance companies, research institutes and press agencies.   
+#'
+#' @name train
+#' 
+#' @docType data
+#'
+#' @usage data(train)
+#'
+#' @format An object of class \code{"data.table"}.
+#'
+#' @keywords datasets
+#'
+#'
+#' @examples
+#' data(train)
+#' str(train)
+NULL
 
 #' IHR data set 2010-2016
 #'

@@ -1,0 +1,73 @@
+---
+title: "How to make a submission"
+date: "`r Sys.Date()`"
+github_document:
+    toc_dept: 1
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+
+### Become a github collaborator
+
+Please send your github user ID to oliver.ratmann@imperial.ac.uk, and accept
+the invitation to collaborate on the DataChallenge.2017 repository. 
+
+
+### Prepare your submission
+
+Make your predictions in `R` and store them in a `csv` file. Submissions need to
+be of the following format:
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+require(DataChallenge.2017)
+data(train)
+#	set the file name of your prediction
+#	please replace TEAM with your team name
+#	and SUBMISSION with your submission ID
+outfile.base <- 'DataChallenge_TEAM_SUBMISSION_'
+#	extract the countries and years for which you need to make a prediction
+#	and make your prediction
+sub <- subset(train, YEAR>=2015)	
+sub[, PREDICTION:= as.integer(runif(nrow(sub),0,1)>0.5)]
+
+#	your submission takes the following format: 5 columns with names
+#	ISO (country code)
+#	YEAR (this is obvious)
+#	TEAM_ID (perhaps just your names)
+#	SUBMISSION_ID (unique to this submission)
+#	PREDICTION (real numbers are allowed. you should make a prediction for each country and each year)
+sub		<- unique(subset(sub, select=c(ISO,YEAR,PREDICTION)))
+sub[, TEAM_ID:='olli0601']
+sub[, SUBMISSION_ID:='random']
+
+#	check your submission, there should be no warnings
+dc.check.submission(sub)
+
+#	write submission to file
+write.csv(sub, row.names=FALSE, file=paste0(outfile.base,'predictions.csv'))
+```    
+
+### Upload your submission
+
+Next, you need to upload your submission. This is easy once you accepted the
+github invitation to collaborate on the Data Challenge.
+
+1. [Go to the github repository of the Data
+   Challenge.](https://github.com/olli0601/DataChallenge.2017)
+2. [Click on the submissions folder.](https://github.com/olli0601/DataChallenge.2017/tree/master/submissions)
+3. Click the Upload Files button, drag and drop the submission you created.
+4. Commit your submission to the master branch. That s it! 
+
+### How your submission is evaluated
+
+We will calculate the mean squared error between all of your submissions and the
+true number of epidemic outbreaks in 2015 and 2016 across all countries.
+Submissions that do not pass the `dc.check.submission` will be ignored. Only
+your best submission will be used, so don t worry about making multiple
+submissions.
+
+Just one more note: beating our baseline prediction is not difficult, do not
+worry. =J  

@@ -1,4 +1,4 @@
-title: Imperial/WHO DataChallenge MSc in Statistics 2017
+title: Data Challenge 2017
 url: https://olli0601.github.io/DataChallenge.2017/index.html
 template:
   params:
@@ -7,6 +7,7 @@ reference:
   - title: Available data
     desc: ~
     contents:
+      - '`train`'  
       - '`ihr`'      
       - '`cap`'      
       - '`gdp`'      
@@ -14,7 +15,11 @@ reference:
       - '`nut`'      
       - '`pop13`'      
       - '`whoreg`'
-      - '`devi`'        
+      - '`devi`'   
+  - title: Available functions
+    desc: ~
+    contents:
+      - '`dc.check.submission`'              
 navbar:
   type: inverse
   left:
@@ -23,7 +28,9 @@ navbar:
     - text: "How To"
       menu: 
       -  text: How to get started
-         href: articles/GetStarted.html      
+         href: articles/GetStarted.html
+      -  text: How to make a submission
+         href: articles/MakeASubmission.html      
   right:    
     - icon: fa-file-code-o 
       text: "functions"
