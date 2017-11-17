@@ -34,6 +34,9 @@
      
   </a>
 </li>
+<li>
+  <a href="../articles/Logistics.html">Logistics</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     How To
@@ -48,6 +51,9 @@
       <a href="../articles/MakeASubmission.html">How to make a submission</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../articles/Leaderboard.html">Leaderboard</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -79,7 +85,7 @@
     <div class="page-header toc-ignore">
       <h1>How to make a submission</h1>
             
-            <h4 class="date">2017-11-16</h4>
+            <h4 class="date">2017-11-17</h4>
           </div>
 
     
@@ -88,12 +94,13 @@
 <div id="become-a-github-collaborator" class="section level3">
 <h3 class="hasAnchor">
 <a href="#become-a-github-collaborator" class="anchor"></a>Become a github collaborator</h3>
-<p>Please send your github user ID to <a href="mailto:oliver.ratmann@imperial.ac.uk">oliver.ratmann@imperial.ac.uk</a>, and accept the invitation to collaborate on the DataChallenge.2017 repository.</p>
+<p>To make a submission, you need to become a collaborator with the Data Challenge. 1. <a href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/">If you have not done already, register a github account.</a> 2. Send your github user ID to <a href="mailto:oliver.ratmann@imperial.ac.uk">oliver.ratmann@imperial.ac.uk</a> 3. Log on to your github account and remain logged on for the day. 4. Accept our invitation to collaborate on the DataChallenge.2017 repository.</p>
 </div>
 <div id="prepare-your-submission" class="section level3">
 <h3 class="hasAnchor">
 <a href="#prepare-your-submission" class="anchor"></a>Prepare your submission</h3>
-<p>Make your predictions in <code>R</code> and store them in a <code>csv</code> file. Submissions need to be of the following format:</p>
+<p>Make your predictions in <code>R</code> and store them in a <code>csv</code> file.</p>
+<p>The following code illustrates how to do this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
 <span class="kw">data</span>(train)
 <span class="co">#   set the file name of your prediction</span>
@@ -127,16 +134,20 @@ sub[, SUBMISSION_ID:<span class="er">=</span><span class="st">'random'</span>]
 <p>Next, you need to upload your submission. This is easy once you accepted the github invitation to collaborate on the Data Challenge.</p>
 <ol style="list-style-type: decimal">
 <li><a href="https://github.com/olli0601/DataChallenge.2017">Go to the github repository of the Data Challenge.</a></li>
+<li>Make sure you are logged in on github with your github user ID.</li>
 <li><a href="https://github.com/olli0601/DataChallenge.2017/tree/master/submissions">Click on the submissions folder.</a></li>
 <li>Click the Upload Files button, drag and drop the submission you created.</li>
 <li>Commit your submission to the master branch. That s it!</li>
 </ol>
+<p>** First rule for today: submissions that do not pass <code>dc.check.submission</code> will be ignored. **</p>
+<p>** Second rule for today: your team can make at most 20 submissions. **</p>
 </div>
 <div id="how-your-submission-is-evaluated" class="section level3">
 <h3 class="hasAnchor">
 <a href="#how-your-submission-is-evaluated" class="anchor"></a>How your submission is evaluated</h3>
-<p>We will calculate the mean squared error between all of your submissions and the true number of epidemic outbreaks in 2015 and 2016 across all countries. Submissions that do not pass the <code>dc.check.submission</code> will be ignored. Only your best submission will be used, so don t worry about making multiple submissions.</p>
-<p>Just one more note: beating our baseline prediction is not difficult, do not worry. =J</p>
+<p>We will calculate the mean squared error between all of your submissions and the true number of epidemic outbreaks in 2015 and 2016 across all countries.</p>
+<p>Submissions that do not pass the <code>dc.check.submission</code> will be ignored. If more than 20 entries are submitted by your team, only the first 20 will be considered.</p>
+<p>Beating our baseline prediction is not difficult, do not worry. We hope you enjoy working with real &amp; messy data today, which is a bit different to what you typically see in your courses. =J</p>
 </div>
 </div>
   </div>

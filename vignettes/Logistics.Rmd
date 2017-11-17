@@ -1,0 +1,31 @@
+---
+title: "Logistics"
+date: "`r Sys.Date()`"
+github_document:
+    toc_dept: 1
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+
+### Schedule Monday Nov 20
+
+* 09:30 Huxley 215: Intro to Data Challenge (Oliver Ratmann)
+* 11:30: First leaderboard results online, updated every half hour
+* 11:30-12:30 Huxley 215: Support clinic (Jack Hogan)
+* 13:30-14:30 Huxley 215: Support clinic (Jack Hogan, Oliver Ratmann)
+* 16:00: Deadline for last predictions
+* 16:30 Maths Common Room: Drinks receptions & announce winner. The
+  prize will be £240 for the winning team and the prestigious title of MSc Stats
+  Challenge Winners 2017! There will be two runner up prizes of £60 for
+  the second and third placed teams.  
+
+### Credits
+
+This is worth 3% of your Applied Statistics module. If your model beats a
+predetermined benchmark you will get all 3%, if you don't you will get 0. Don't
+worry, the benchmark is low!
+
+

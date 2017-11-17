@@ -19,18 +19,23 @@ reference:
   - title: Available functions
     desc: ~
     contents:
-      - '`dc.check.submission`'              
+      - '`dc.check.submission`'
+      - '`dc.evaluate`'              
 navbar:
   type: inverse
   left:
     - icon: fa-home
       href: index.html
+    - text: "Logistics" 
+      href: articles/Logistics.html
     - text: "How To"
       menu: 
       -  text: How to get started
          href: articles/GetStarted.html
       -  text: How to make a submission
-         href: articles/MakeASubmission.html      
+         href: articles/MakeASubmission.html 
+    - text: "Leaderboard"
+      href: articles/Leaderboard.html   
   right:    
     - icon: fa-file-code-o 
       text: "functions"

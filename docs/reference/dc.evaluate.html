@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • Data Challenge 2017</title>
+<title>Evaluate the MSE of submitted predictions to the Data Challenge — dc.evaluate • Data Challenge 2017</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -104,115 +104,38 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.1-0</small>
-      </h1>
+    <h1>Evaluate the MSE of submitted predictions to the Data Challenge</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-available-data" class="hasAnchor"><a href="#section-available-data" class="anchor"></a>Available data</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="train.html">data</a></code> </p>
-          </td>
-          <td><p>Epidemic Disasters training data set 2010-2014</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ihr.html">data</a></code> </p>
-          </td>
-          <td><p>IHR data set 2010-2016</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cap.html">data</a></code> </p>
-          </td>
-          <td><p>World Bank Capacity data set 2010-2016</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gdp.html">data</a></code> </p>
-          </td>
-          <td><p>World Bank GDP data set 2010-2016</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pov.html">data</a></code> </p>
-          </td>
-          <td><p>World Bank Poverty and Equity data set 2010-2016</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nut.html">data</a></code> </p>
-          </td>
-          <td><p>World Bank Health and Nutrition data set 2010-2016</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pop13.html">data</a></code> </p>
-          </td>
-          <td><p>Populations 2013 data set</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="whoreg.html">data</a></code> </p>
-          </td>
-          <td><p>WHO regions data set</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="devi.html">data</a></code> </p>
-          </td>
-          <td><p>World Bank Development Indicators data set 2010-2016</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-available-functions" class="hasAnchor"><a href="#section-available-functions" class="anchor"></a>Available functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dc.check.submission.html">dc.check.submission</a></code> </p>
-          </td>
-          <td><p>Check if a submission to the DataChallenge has the right format.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dc.evaluate.html">dc.evaluate</a></code> </p>
-          </td>
-          <td><p>Evaluate the MSE of submitted predictions to the Data Challenge</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <pre class="usage"><span class='fu'>dc.evaluate</span>(<span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>save</th>
+      <td><p>boolean if to save MSE ranking to file</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data.table with columns F, T, TEAM_ID, SUBMISSION_ID, MSE</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-available-data">Available data</a></li>
-      <li><a href="#section-available-functions">Available functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

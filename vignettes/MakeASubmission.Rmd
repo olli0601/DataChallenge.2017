@@ -12,14 +12,20 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 ### Become a github collaborator
 
-Please send your github user ID to oliver.ratmann@imperial.ac.uk, and accept
-the invitation to collaborate on the DataChallenge.2017 repository. 
+To make a submission, you need to become a collaborator with the Data Challenge.
+
+1. [If you have not done already, register a github
+   account.](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/)
+2. Send your github user ID to oliver.ratmann@imperial.ac.uk
+3. Log on to your github account and remain logged on for the day.
+4. Accept our invitation to collaborate on the DataChallenge.2017 repository. 
 
 
 ### Prepare your submission
+ 
+Store your predictions in a `csv` file. 
 
-Make your predictions in `R` and store them in a `csv` file. Submissions need to
-be of the following format:
+The following `R` code illustrates how to do this:
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
 require(DataChallenge.2017)
@@ -33,17 +39,18 @@ outfile.base <- 'DataChallenge_TEAM_SUBMISSION_'
 sub <- subset(train, YEAR>=2015)	
 sub[, PREDICTION:= as.integer(runif(nrow(sub),0,1)>0.5)]
 
-#	your submission takes the following format: 5 columns with names
-#	ISO (country code)
-#	YEAR (this is obvious)
-#	TEAM_ID (perhaps just your names)
+#	submissions must have the following format: 5 columns with names
+#	ISO (country code as in sub above)
+#	YEAR (2015 and 2016 as in sub above)
+#	TEAM_ID (allocated to you)
 #	SUBMISSION_ID (unique to this submission)
-#	PREDICTION (real numbers are allowed. you should make a prediction for each country and each year)
+#	PREDICTION (real numbers are allowed). 
+#	You need to make a prediction for each country and each year in `subset(train, YEAR>=2015)`.
 sub		<- unique(subset(sub, select=c(ISO,YEAR,PREDICTION)))
 sub[, TEAM_ID:='olli0601']
 sub[, SUBMISSION_ID:='random']
 
-#	check your submission, there should be no warnings
+#	check your submission, this must evaluate to TRUE. 
 dc.check.submission(sub)
 
 #	write submission to file
@@ -53,21 +60,30 @@ write.csv(sub, row.names=FALSE, file=paste0(outfile.base,'predictions.csv'))
 ### Upload your submission
 
 Next, you need to upload your submission. This is easy once you accepted the
-github invitation to collaborate on the Data Challenge.
+github invitation to collaborate on the Data Challenge. 
+
 
 1. [Go to the github repository of the Data
    Challenge.](https://github.com/olli0601/DataChallenge.2017)
-2. [Click on the submissions folder.](https://github.com/olli0601/DataChallenge.2017/tree/master/submissions)
-3. Click the Upload Files button, drag and drop the submission you created.
-4. Commit your submission to the master branch. That s it! 
+2. Make sure you are logged in on github with your github user ID. 
+3. [Click on the submissions folder.](https://github.com/olli0601/DataChallenge.2017/tree/master/submissions)
+4. Click the Upload Files button, drag and drop the submission you created.
+5. Commit your submission to the master branch. That s it! 
+
+** First rule for today: submissions that do not pass `dc.check.submission` will
+be ignored. **
+
+** Second rule for today: your team can make at most 20 submissions. **
 
 ### How your submission is evaluated
 
 We will calculate the mean squared error between all of your submissions and the
 true number of epidemic outbreaks in 2015 and 2016 across all countries.
-Submissions that do not pass the `dc.check.submission` will be ignored. Only
-your best submission will be used, so don t worry about making multiple
-submissions.
 
-Just one more note: beating our baseline prediction is not difficult, do not
-worry. =J  
+Submissions that do not pass the `dc.check.submission` will be ignored. If more
+than 20 entries are submitted by your team, only the first 20 will be
+considered.
+
+Beating our baseline prediction is not difficult, do not worry. We hope you
+enjoy working with real & messy data today, which is a bit different to what
+you typically see in your courses. =J  

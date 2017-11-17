@@ -1,0 +1,43 @@
+---
+title: "Leaderboard"
+date: "`r Sys.time()`"
+github_document:
+    toc_dept: 1
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+
+```{r preprocess, include = FALSE}
+require(knitr)
+require(data.table)
+require(DataChallenge.2017)
+
+evs			<- dc.evaluate(save=TRUE)
+baseline	<- subset(evs, FILE=='/Users/Oliver/git/DataChallenge.2017/data_private/DataChallenge_olli0601_baseline_predictions.csv')[, MSE]
+evs			<- subset(evs, FILE!='/Users/Oliver/git/DataChallenge.2017/data_private/DataChallenge_olli0601_baseline_predictions.csv')
+evs			<- evs[order(MSE), ]
+evs[, RANK:= seq_len(nrow(evs))]
+evs[, ABOVE_BASELINE:= as.character(factor(MSE<=baseline, levels=c(TRUE,FALSE), labels=c('yes','no')))]
+evs[, FILE:=NULL]
+
+dtop10		<- subset(evs, RANK<=10, select=c(TEAM_ID, SUBMISSION_ID, TIME, MSE, RANK, ABOVE_BASELINE))
+dbestofteam	<- evs[, {
+			z<- which.min(MSE)
+			list(SUBMISSION_ID=SUBMISSION_ID[z], TIME=TIME[z], MSE=MSE[z], RANK=RANK[z], ABOVE_BASELINE=ABOVE_BASELINE[z])
+		}, by='TEAM_ID']
+```    
+
+### Current top 10 submissions
+
+```{r top10, results = 'asis', echo=FALSE}
+kable(dtop10)
+```
+
+### Top submissions by team  
+
+```{r bestofteam, results = 'asis', echo=FALSE}
+kable(dbestofteam)
+```

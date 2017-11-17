@@ -1,47 +1,52 @@
+#' @export
+#' @import data.table
+#' @title Evaluate the MSE of submitted predictions to the Data Challenge
+#' @param save boolean if to save MSE ranking to file  
+#' @return data.table with columns F, T, TEAM_ID, SUBMISSION_ID, MSE
 dc.evaluate<- function(save=FALSE)
-{
-	require(data.table)
-	require(ggplot2)
-	require(DataChallenge.2017)
-	
+{		
 	#
-	#	find submissions
-	infile.results		<- system.file(package='DataChallenge.2017', "submissions")
+	#	find submissions	
+	indir.submissions	<- "/Users/Oliver/git/DataChallenge.2017/submissions"
+	infile.test.data	<- "/Users/Oliver/git/DataChallenge.2017/data_private/emdat_test.RData"
+	infile.baseline		<- "/Users/Oliver/git/DataChallenge.2017/data_private/DataChallenge_olli0601_baseline_predictions.csv"
+	
 	#infile.results		<- "~/Box Sync/OR_Work/teaching/2017_DataChallenge"
-	infile.results		<- data.table(F=list.files(infile.results, pattern='_predictions.csv',full.name=TRUE))
-	tmp					<- infile.results[, list(T=gsub(' ','_',as.character(file.mtime(F)))), by='F']
-	infile.results		<- merge(infile.results, tmp, by='F')
-	#infile.results		<- subset(infile.results, grepl('EMD',F))
+	infile.results		<- list.files(indir.submissions, pattern='_predictions.csv$',full.name=TRUE)	
+	infile.results		<- c(infile.baseline, infile.results)
+	infile.results		<- data.table(FILE=infile.results)
+	#	add time stamp
+	tmp					<- infile.results[, list(TIME=gsub(' ','_',as.character(file.mtime(FILE)))), by='FILE']
+	infile.results		<- merge(infile.results, tmp, by='FILE')	
+	#infile.results		<- subset(infile.results, grepl('EMD',FILE))
 	#	check if submissions are valid
 	infile.results		<- infile.results[, {
-				ev	<- as.data.table(read.csv(F, stringsAsFactors=FALSE))				
+				ev	<- as.data.table(read.csv(FILE, stringsAsFactors=FALSE))				
 				list(PASSED_CHECK=dc.check.submission(ev))
-			}, by=c('F','T')]
-	
+			}, by=c('FILE','TIME')]	
+	#	exclude those that don t pass check
+	tmp				<- subset(infile.results, PASSED_CHECK!=1)
+	if(nrow(tmp))
+		warning('The following submissions did not pass the check and will be excluded\n',tmp[, paste(basename(FILE), collapse=', ')])
+	infile.results	<- subset(infile.results, PASSED_CHECK==1)
 	#	read submissions
 	tmp			<- lapply(seq_len(nrow(infile.results)), function(i){
-				ev	<- as.data.table(read.csv(infile.results[i,F], stringsAsFactors=FALSE))
-				ev[, F:= infile.results[i,F]]
-				ev[, T:= infile.results[i,T]]
+				ev	<- as.data.table(read.csv(infile.results[i,FILE], stringsAsFactors=FALSE))
+				ev[, FILE:= infile.results[i,FILE]]
+				ev[, TIME:= infile.results[i,TIME]]
 				ev
 			})	
-	ev			<- do.call('rbind',tmp)
-	
+	ev			<- do.call('rbind',tmp)	
 	#	read test data and merge
-	infile.test.data	<- system.file(package='DataChallenge.2017', "data_private", "emdat_test.RData")
-	#infile.test.data	<- "~/Box Sync/OR_Work/teaching/2017_DataChallenge/MSc_stats_ICL_MSc_stats_ICL_EMDatSummary_Test.rda"
 	load(infile.test.data)
 	setnames(test, 'DISASTERS_N','ACTUAL')
 	test		<- unique(subset(test, YEAR>=2015, select=c(ISO, YEAR, ACTUAL)))
-		
 	ev			<- merge(test, ev, by=c('ISO','YEAR'))
-	
 	#	calculate MSE
-	evs			<- ev[, list( MSE= mean((ACTUAL-PREDICTION)*(ACTUAL-PREDICTION)) ), by=c('F','T','TEAM_ID','SUBMISSION_ID')]
-	
+	evs			<- ev[, list( MSE= mean((ACTUAL-PREDICTION)*(ACTUAL-PREDICTION)) ), by=c('FILE','TIME','TEAM_ID','SUBMISSION_ID')]	
 	#	return MSE
 	if(save)		
-		write.table(evs, row.names=FALSE, sep='\t', file=file.path(system.file(package='DataChallenge.2017', "submissions"), "MSE_latest_submissions.txt"))
+		write.table(evs, row.names=FALSE, sep='\t', file=file.path(indir.submissions, "MSE_latest_submissions.txt"))
 	setkey(evs, MSE)
 	return(evs)	
 }

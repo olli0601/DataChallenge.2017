@@ -3,5 +3,7 @@ urls:
   article: https://olli0601.github.io/DataChallenge.2017/index.html/articles
 articles:
   GetStarted: GetStarted.html
+  Leaderboard: Leaderboard.html
+  Logistics: Logistics.html
   MakeASubmission: MakeASubmission.html
 

@@ -29,7 +29,7 @@ same countries in the years 2015 and 2016.
 Scientifically, we are interested in identifying and understanding the interplay
 of factors that are predictive of epidemic disasters at a country level. 
 
-### Open data
+### Open data for making a difference
 To model vulnerability, the Word Health Organization is collecting data on a
 countries' capacity to respond to major public health crises. The IHR data set
 contains records of 11 capacity indicators per country for 6 years, 2010 to
