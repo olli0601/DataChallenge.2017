@@ -413,33 +413,3 @@ dc.read.IHR.data<- function()
 	setnames(ihr, setdiff(colnames(ihr), c('ISO','YEAR','COUNTRY')), paste0('IHR_',setdiff(colnames(ihr), c('ISO','YEAR','COUNTRY'))))	
 	save(ihr, file=paste0(outfile.base,'ihr.RData'))
 }
-
-dc.merge.data.by.countrycode<- function()
-{
-	require(DataChallenge.2017)
-	data(train)
-	data(cap)
-	data(ihr)
-	data(gdp)
-	data(nut)
-	data(pov)
-	data(devi)
-	data(whoreg)
-	data(pop13)
-	
-	outdir		<- '~/Box Sync/OR_Work/teaching/2017_DataChallenge'
-	outfile.base<- file.path(outdir,'MSc_stats_ICL_')	
-	#
-	# merge emd + others by iso and year	
-	emd	<- merge(emd, whoreg, by=c('ISO'), all.x=TRUE)
-	emd	<- merge(emd, pop13, by=c('ISO'), all.x=TRUE)
-	emd	<- merge(emd, ihr, by=c('ISO','YEAR'), all.x=TRUE)	
-	emd	<- merge(emd, gdp, by=c('ISO','YEAR'), all.x=TRUE)
-	emd	<- merge(emd, devi, by=c('ISO','YEAR'), all.x=TRUE)
-	emd	<- merge(emd, pov, by=c('ISO','YEAR'), all.x=TRUE)
-	emd	<- merge(emd, cap, by=c('ISO','YEAR'), all.x=TRUE)
-	emd	<- merge(emd, nut, by=c('ISO','YEAR'), all.x=TRUE)
-	emd	<- subset(emd, !is.na(WHO_REGION))		# drop from test "Aruba"                 "Albania"               "Puerto Rico"           "West Bank and Gaza"    "Virgin Islands (U.S.)" "Kosovo"
-	#
-	write.csv(emd, file=paste0(outfile.base,'MergedData_EMD_plus_Covariates.csv'), row.names=FALSE)	
-}
