@@ -85,7 +85,7 @@
     <div class="page-header toc-ignore">
       <h1>How to get started</h1>
             
-            <h4 class="date">2017-11-17</h4>
+            <h4 class="date">2017-11-19</h4>
           </div>
 
     
@@ -99,31 +99,57 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<p>To get started, type in <code>R</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+<p>To get started, install in <code>R</code> required packages and then the <code>DataChallenge.2017</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"data.table"</span>)
+<span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
 devtools:::<span class="kw">install_github</span>(<span class="st">"olli0601/DataChallenge.2017"</span>)
+<span class="kw">require</span>(data.table)
 <span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
 ?ihr
 ?train</code></pre></div>
-<p>Loading the package makes the various data sets available. <a href="https://olli0601.github.io/DataChallenge.2017/reference/index.html">They are listed under the functions tab above</a>. Take a look to learn their names and get a first feel for the data points in there. All data sets have two common columns, an anonymised country code (<code>ISO</code>) and year of data collection (<code>YEAR</code>). You can also do:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
+<p>Loading the package makes the various data sets available. <a href="https://olli0601.github.io/DataChallenge.2017/reference/index.html">They are listed under the functions tab above</a>. Take a look to learn their names and get a first feel for the data points in there. All data sets have two common columns, country code (<code>ISO</code>) and year of data collection (<code>YEAR</code>). You can also do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+<span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
 <span class="kw">data</span>(ihr)
 ?ihr</code></pre></div>
 </div>
 <div id="quick-survival-guide" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quick-survival-guide" class="anchor"></a>Quick survival guide</h3>
-<p>The very first step is to combine different data sets by country code and year of data collection. The data sets are stored as a <code>data.table</code> object. A <code>data.table</code> is very similar to a standard <code>R</code> <code>data.frame</code>, but <strong>much faster</strong> and <strong>you can do a lot more</strong>. <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">Have a look at one or two data table tutorials online</a>.</p>
+<p>The very first step is to combine different data sets by country code and year of data collection. The data sets are stored as a <code>data.table</code> object. A <code>data.table</code> is very similar to a standard <code>R</code> <code>data.frame</code>, but <strong>much faster</strong> and <strong>you can do a lot more</strong>. <a href="https://www.datacamp.com/community/tutorials/data-table-r-tutorial">Have a look at one or two data table tutorials online</a>.</p>
 <p>First hint: use <code>data.table</code>’s <code>merge</code> function by country code and year to combine the data sets. This is much more efficient than <code>for</code> loops or <code>lapply</code>.</p>
-<p>Second hint: try using <code>data.table</code>’s <code>[...]</code> syntax. The code below tells you what proportion of the data are missing for each column of the <code>pov</code> data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
+<p>Fallback: you can convert the data to <code>data.frame</code>s, and then work with those, including the standard <code>R</code> <code>merge</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+<span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
+<span class="kw">data</span>(ihr)
+ihr&lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ihr)</code></pre></div>
+<p>Second hint: the reason we encourage you to use <code>data.table</code>s is their powerful <code>[...]</code> syntax. Here is a short example, which calculates the proportion of the data that are missing for each column of the <code>pov</code> data set. Let’s start with a <code>for</code> loop:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
+<span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
 <span class="kw">data</span>(pov)
-df &lt;-<span class="st"> </span><span class="kw">melt</span>(pov, <span class="dt">id.vars=</span><span class="kw">c</span>(<span class="st">'ISO'</span>,<span class="st">'YEAR'</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
-df[, {
-        z &lt;-<span class="st"> </span><span class="kw">length</span>(value)
+df &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/data.table/topics/melt.data.table">melt</a></span>(<span class="kw">as.data.frame</span>(pov), <span class="dt">id.vars=</span><span class="kw">c</span>(<span class="st">'ISO'</span>,<span class="st">'YEAR'</span>))
+ans &lt;-<span class="st"> </span><span class="kw">matrix</span>(  <span class="dt">data=</span><span class="ot">NA</span>, 
+                <span class="dt">nrow=</span><span class="kw">length</span>(<span class="kw">levels</span>(df$variable)), 
+                <span class="dt">ncol=</span><span class="dv">3</span>, 
+                <span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">levels</span>(df$variable), <span class="kw">c</span>(<span class="st">'N'</span>,<span class="st">'N_NA'</span>,<span class="st">'P_NA'</span>)))
+for(x in <span class="kw">levels</span>(df$variable))
+{
+    tmp &lt;-<span class="st"> </span><span class="kw">which</span>(df$variable==x)
+    z &lt;-<span class="st"> </span><span class="kw">length</span>(df$value[tmp])
+    z2 &lt;-<span class="kw">length</span>(<span class="kw">which</span>(<span class="kw">is.na</span>(df$value[tmp])))
+    tmp &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rownames</span>(ans)==x)
+    ans[tmp, <span class="st">'N'</span>] &lt;-<span class="st"> </span>z
+    ans[tmp, <span class="st">'N_NA'</span>] &lt;-<span class="st"> </span>z2
+    ans[tmp, <span class="st">'P_NA'</span>] &lt;-<span class="st"> </span>z2/z
+}       </code></pre></div>
+<p>Here is the corresponding <code>data.table</code> code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/data.table/topics/melt.data.table">melt</a></span>(pov, <span class="dt">id.vars=</span><span class="kw">c</span>(<span class="st">'ISO'</span>,<span class="st">'YEAR'</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+df[, {              
+        z &lt;-<span class="st"> </span><span class="kw">length</span>(value)      
         z2 &lt;-<span class="kw">length</span>(<span class="kw">which</span>(<span class="kw">is.na</span>(value)))
-        <span class="kw">list</span>(<span class="dt">N=</span>z, <span class="dt">N_NA=</span>z2, <span class="dt">P_NA=</span> z2/z)
+        <span class="kw">list</span>(<span class="dt">N=</span>z, <span class="dt">N_NA=</span>z2, <span class="dt">P_NA=</span> z2/z) 
      }, by=<span class="kw">c</span>(<span class="st">'variable'</span>)]       </code></pre></div>
+<p>With the <code>for</code> loop, you need to track indices, and I bet you can see this is becoming a pain when you have 2 or more columns to loop over. With <code>data.table</code>s, all you need to do is to change <code>by=c('variable')</code> to <code>by=c('variable1','variable2')</code>.</p>
 <p>Third hint: there really are not that many data points in the epidemic training data set to begin with, while there are a large number of covariates. The challenge is to make the most in this <strong>small n large p setting</strong>. What techniques could be appropriate for predicting the number of 2015 and 2016 outbreaks? Start with some regressions, and google your way.</p>
 <p>Fourth hint: the epidemiologic outbreak data are counts, but you don t have to worry about this too much for this year’s Data Challenge. It is fine to make predictions that are real values.</p>
 </div>

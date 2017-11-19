@@ -21,10 +21,13 @@ Challenge.](https://www.imperial.ac.uk/admin-services/ict/self-service/research-
 
 ### Installation
 
-To get started, type in `R`:
-```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
-# install.packages("devtools")
+To get started, install in `R` required packages and then the
+`DataChallenge.2017` package: 
+```{r, eval=FALSE, message=FALSE, warning=FALSE,include=TRUE} 
+install.packages("data.table")
+install.packages("devtools")
 devtools:::install_github("olli0601/DataChallenge.2017")
+require(data.table)
 require(DataChallenge.2017)
 ?ihr
 ?train
@@ -34,10 +37,11 @@ Loading the package makes the various data sets available. [They are listed unde
 the functions tab
 above](https://olli0601.github.io/DataChallenge.2017/reference/index.html).
 Take a look to learn their names and get a first feel for the data points in
-there. All data sets have two common columns, an anonymised country code (`ISO`)
+there. All data sets have two common columns, country code (`ISO`)
 and   year of data collection (`YEAR`). You can also do:
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+require(data.table)
 require(DataChallenge.2017)
 data(ihr)
 ?ihr
@@ -48,28 +52,59 @@ data(ihr)
 The very first step is to combine different data sets by country code and
 year of data collection. The data sets are stored as a `data.table` object.
 A `data.table` is very similar to a standard `R` `data.frame`, but **much
-faster** and **you can do a lot more**. [Have a look at
-one or two data table
+faster** and **you can do a lot more**. [Have a look at one or two data table
 tutorials
-online](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+online](https://www.datacamp.com/community/tutorials/data-table-r-tutorial).
   
 First hint: use `data.table`'s `merge` function by country code and year to
-combine the data sets. This is much more efficient than `for` loops or
-`lapply`.
+combine the data sets. This is much more efficient than `for` loops or `lapply`.
+
+
+Fallback: you can convert the data to `data.frame`s, and then work with those,
+including the standard `R` `merge` function. 
+```{r, eval=FALSE, message=FALSE,warning=FALSE, include=TRUE} 
+require(data.table)
+require(DataChallenge.2017)
+data(ihr)
+ihr<- as.data.frame(ihr)
+```  
   
-Second hint: try using `data.table`'s `[...]` syntax. The code below tells
-you what proportion of the data are missing for each column of the `pov` data
-set. 
+Second hint: the reason we encourage you to use `data.table`s is their powerful
+`[...]` syntax. Here is a short example, which calculates the proportion
+of the data that are missing for each column of the `pov` data set.  Let's start
+with a `for` loop: 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+require(data.table)
 require(DataChallenge.2017)
 data(pov)
+df <- melt(as.data.frame(pov), id.vars=c('ISO','YEAR'))
+ans <- matrix(	data=NA, 
+		 		nrow=length(levels(df$variable)), 
+				ncol=3, 
+				dimnames=list(levels(df$variable), c('N','N_NA','P_NA')))
+for(x in levels(df$variable))
+{
+	tmp <- which(df$variable==x)
+	z <- length(df$value[tmp])
+	z2 <-length(which(is.na(df$value[tmp])))
+	tmp <- which(rownames(ans)==x)
+	ans[tmp, 'N'] <- z
+	ans[tmp, 'N_NA'] <- z2
+	ans[tmp, 'P_NA'] <- z2/z
+}		
+```
+Here is the corresponding `data.table` code:
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
 df <- melt(pov, id.vars=c('ISO','YEAR'), stringsAsFactors=FALSE)
-df[, {
-		z <- length(value)
+df[, {				
+		z <- length(value)		
 		z2 <-length(which(is.na(value)))
-		list(N=z, N_NA=z2, P_NA= z2/z)
+		list(N=z, N_NA=z2, P_NA= z2/z) 
 	 }, by=c('variable')]		
 ```
+With the `for` loop, you need to track indices, and I bet you can see this is becoming a 
+pain when you have 2 or more columns to loop over. With `data.table`s, all you
+need to do is to change `by=c('variable')` to `by=c('variable1','variable2')`.
 
 Third hint: there really are not that many data points in the epidemic training
 data set to begin with, while there are a large number of covariates. The

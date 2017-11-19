@@ -85,7 +85,7 @@
     <div class="page-header toc-ignore">
       <h1>How to make a submission</h1>
             
-            <h4 class="date">2017-11-17</h4>
+            <h4 class="date">2017-11-19</h4>
           </div>
 
     
@@ -94,13 +94,20 @@
 <div id="become-a-github-collaborator" class="section level3">
 <h3 class="hasAnchor">
 <a href="#become-a-github-collaborator" class="anchor"></a>Become a github collaborator</h3>
-<p>To make a submission, you need to become a collaborator with the Data Challenge. 1. <a href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/">If you have not done already, register a github account.</a> 2. Send your github user ID to <a href="mailto:oliver.ratmann@imperial.ac.uk">oliver.ratmann@imperial.ac.uk</a> 3. Log on to your github account and remain logged on for the day. 4. Accept our invitation to collaborate on the DataChallenge.2017 repository.</p>
+<p>To make a submission, you need to become a collaborator with the Data Challenge.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/">If you have not done already, register a github account.</a></li>
+<li>Send your github user ID to <a href="mailto:oliver.ratmann@imperial.ac.uk">oliver.ratmann@imperial.ac.uk</a>
+</li>
+<li>Log on to your github account and remain logged on for the day.</li>
+<li>Accept our invitation to collaborate on the DataChallenge.2017 repository.</li>
+</ol>
 </div>
 <div id="prepare-your-submission" class="section level3">
 <h3 class="hasAnchor">
 <a href="#prepare-your-submission" class="anchor"></a>Prepare your submission</h3>
-<p>Make your predictions in <code>R</code> and store them in a <code>csv</code> file.</p>
-<p>The following code illustrates how to do this:</p>
+<p>Store your predictions in a <code>csv</code> file.</p>
+<p>The following <code>R</code> code illustrates how to do this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(DataChallenge<span class="fl">.2017</span>)
 <span class="kw">data</span>(train)
 <span class="co">#   set the file name of your prediction</span>
@@ -112,17 +119,18 @@ outfile.base &lt;-<span class="st"> 'DataChallenge_TEAM_SUBMISSION_'</span>
 sub &lt;-<span class="st"> </span><span class="kw">subset</span>(train, YEAR&gt;=<span class="dv">2015</span>)    
 sub[, PREDICTION:<span class="er">=</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">runif</span>(<span class="kw">nrow</span>(sub),<span class="dv">0</span>,<span class="dv">1</span>)&gt;<span class="fl">0.5</span>)]
 
-<span class="co">#   your submission takes the following format: 5 columns with names</span>
-<span class="co">#   ISO (country code)</span>
-<span class="co">#   YEAR (this is obvious)</span>
-<span class="co">#   TEAM_ID (perhaps just your names)</span>
+<span class="co">#   submissions must have the following format: 5 columns with names</span>
+<span class="co">#   ISO (country code as in sub above)</span>
+<span class="co">#   YEAR (2015 and 2016 as in sub above)</span>
+<span class="co">#   TEAM_ID (allocated to you)</span>
 <span class="co">#   SUBMISSION_ID (unique to this submission)</span>
-<span class="co">#   PREDICTION (real numbers are allowed. you should make a prediction for each country and each year)</span>
+<span class="co">#   PREDICTION (real numbers are allowed). </span>
+<span class="co">#   You need to make a prediction for each country and each year in `subset(train, YEAR&gt;=2015)`.</span>
 sub     &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">subset</span>(sub, <span class="dt">select=</span><span class="kw">c</span>(ISO,YEAR,PREDICTION)))
 sub[, TEAM_ID:<span class="er">=</span><span class="st">'olli0601'</span>]
 sub[, SUBMISSION_ID:<span class="er">=</span><span class="st">'random'</span>]
 
-<span class="co">#   check your submission, there should be no warnings</span>
+<span class="co">#   check your submission, this must evaluate to TRUE. </span>
 <span class="kw">dc.check.submission</span>(sub)
 
 <span class="co">#   write submission to file</span>
