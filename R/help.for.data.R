@@ -3,7 +3,7 @@
 # Author: Oliver
 ###############################################################################
 
-#' Epidemic Disasters training data set 2010-2014
+#' Epidemic Disasters training data set 2010-2014 
 #'
 #' Number of epidemic disasters per country per year. 
 #' 
