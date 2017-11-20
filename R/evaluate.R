@@ -32,6 +32,7 @@ dc.evaluate<- function(save=FALSE)
 	#	read submissions
 	tmp			<- lapply(seq_len(nrow(infile.results)), function(i){
 				ev	<- as.data.table(read.csv(infile.results[i,FILE], stringsAsFactors=FALSE))
+				ev	<- subset(ev, select=c(ISO,YEAR,PREDICTION,TEAM_ID,SUBMISSION_ID))
 				ev[, FILE:= infile.results[i,FILE]]
 				ev[, TIME:= infile.results[i,TIME]]
 				ev
