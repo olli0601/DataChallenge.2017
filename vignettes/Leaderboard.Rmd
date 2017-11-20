@@ -32,6 +32,27 @@ dbestofteam	<- evs[, {
 		}, by='TEAM_ID']
 ```    
 
+### 2017 Winners
+<br>
+
+The **WINNERS** of the 2017 Data Challenge of the MSc in Statistics are 
+
+**TEAM BOOM BOOM (FRANCK LIN, LAN YU, JUNYU GAO)**.
+
+<br>
+
+**Second prize**: **team Birdo (Wenrui Zheng, Richard Burn, Edoardo
+Lisi)**. 
+
+**Third prize**: **team Koopa (Ting Au, Efstratios Xenelis,
+Catarina Alves)**.
+
+<br>
+
+Congratulations to all.
+
+<br>
+
 ### Current top 10 submissions
 
 ```{r top10, results = 'asis', echo=FALSE}
