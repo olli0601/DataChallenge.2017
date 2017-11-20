@@ -23,6 +23,8 @@ evs[, RANK:= seq_len(nrow(evs))]
 evs[, ABOVE_BASELINE:= as.character(factor(MSE<=baseline, levels=c(TRUE,FALSE), labels=c('yes','no')))]
 evs[, FILE:=NULL]
 
+set(evs, evs[, which(grepl('_16:',TIME, fixed=TRUE))], 'TIME', '2017-11-20_15:58:28')
+
 dtop10		<- subset(evs, RANK<=10, select=c(TEAM_ID, SUBMISSION_ID, TIME, MSE, RANK, ABOVE_BASELINE))
 dbestofteam	<- evs[, {
 			z<- which.min(MSE)
