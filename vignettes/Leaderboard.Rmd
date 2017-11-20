@@ -32,7 +32,7 @@ dbestofteam	<- evs[, {
 		}, by='TEAM_ID']
 ```    
 
-### 2017 Winners
+### 2017 Winners 
 <br>
 
 The **WINNERS** of the 2017 Data Challenge of the MSc in Statistics are 
