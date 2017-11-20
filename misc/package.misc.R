@@ -1,5 +1,8 @@
 dc.make.help<- function()
 {
+	#	soure of inspiration
+	#	http://lbusettspatialr.blogspot.co.uk/2017/08/building-website-with-pkgdown-short.html
+	
 	require(roxygen2)
 	roxygenize('/Users/Oliver/git/DataChallenge.2017')
 	require(DataChallenge.2017)

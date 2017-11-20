@@ -73,7 +73,7 @@ github invitation to collaborate on the Data Challenge.
 ** First rule for today: submissions that do not pass `dc.check.submission` will
 be ignored. **
 
-** Second rule for today: your team can make at most 20 submissions. **
+** Second rule for today: your team can make at most 30 submissions. **
 
 ### How your submission is evaluated
 
@@ -81,7 +81,7 @@ We will calculate the mean squared error between all of your submissions and the
 true number of epidemic outbreaks in 2015 and 2016 across all countries.
 
 Submissions that do not pass the `dc.check.submission` will be ignored. If more
-than 20 entries are submitted by your team, only the first 20 will be
+than 30 entries are submitted by your team, only the first 30 will be
 considered.
 
 Beating our baseline prediction is not difficult, do not worry. We hope you
